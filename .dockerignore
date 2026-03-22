@@ -1,0 +1,17 @@
+# Ignore unnecessary files
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+
+# Ignore build + IDE files
+node_modules
+*.log
+*.tmp
+*.swp
+.vscode
+.idea
+
+# Ignore source code (optional since only jar is needed)
+src/

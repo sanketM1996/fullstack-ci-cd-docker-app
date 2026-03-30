@@ -15,34 +15,38 @@ This project demonstrates how to containerize a Spring Boot application and conn
 ---
 
 ## 📌 Project Architecture
+```bash
 Developer → GitHub → Jenkins → Docker Build → Docker Hub → AWS EC2 → Run Container
-
+```
 ---
 
 
 ## 📂 Project Structure
+```bash
 .
 ├── Dockerfile
 ├── docker-compose.yml
 ├── Jenkinsfile
 ├── pom.xml
-└── src/
+└── src/```
+
 
 ---
 ## ⚙️ Prerequisites
 
 Make sure you have:
-
+```bash
 AWS Account (Free Tier)
 EC2 Instance (Amazon Linux / Ubuntu)
 Docker Installed
 Jenkins Installed
 Git Installed
 Docker Hub Account
-
+```
 ---
 ## ☁️ Step 1: Launch AWS EC2
 Go to AWS Console
+```bash
 Launch EC2 Instance:
 OS: Amazon Linux 2023 / Ubuntu
 Instance Type: t2.micro (Free tier)
@@ -52,6 +56,8 @@ Allow ports in Security Group:
 8081 (App external)
 8080 (Jenkins)
 3306 (MySQL if needed)
+```
+
 
 ---
 ## 🔐 Step 2: Connect to EC2
@@ -113,12 +119,14 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ---
 
 ## ⚙️ Step 6: Configure Jenkins
+```bash
 Install Plugins:
 Docker Pipeline
 Git
 Maven Integration
 Configure Tools:
-Maven → Name: MAVEN
+Maven → Name: MAVEN```
+
 ---
 ## 🔑 Step 7: Add Docker Hub Credentials
 
@@ -132,9 +140,11 @@ Username: DockerHub username
 Password: DockerHub password
 ---
 ## 📥 Step 8: Create Jenkins Pipeline
+
+```bash
 New Item → Pipeline
 Add your Jenkinsfile
-Save & Build
+Save & Build```
 ---
 
 ## 🐳 Step 9: Docker Setup (Manual - Optional)
@@ -154,12 +164,16 @@ docker-compose up -d
 ```
 ---
 ## 🔄 CI/CD Pipeline Stages
+```bash
 ✅ Clone Code from GitHub
 🔨 Build JAR using Maven
 🐳 Build Docker Image
 🔐 Login to Docker Hub
 📤 Push Image
 🚀 Deploy Container
+```
+```
+
 ---
 ▶️ Access Application
 ```bash
@@ -168,18 +182,27 @@ http://<EC2-PUBLIC-IP>:8081
 ---
 🧪 Useful Commands
 Stop all containers
+```bash
 docker stop $(docker ps -q)
+```
 ---
 Remove all containers
+```bash
 docker rm -f $(docker ps -aq)
+```
 ---
 Remove images
+```bash
 docker rmi -f $(docker images -q)
+```
 ---
 Remove volumes
+```bash
 docker volume prune -f
+```
 ---
 ⚠️ Common Issues & Fixes
+```bash
 ❌ Docker Permission Denied
 sudo usermod -aG docker ec2-user
 ❌ Port Already in Use
@@ -189,18 +212,26 @@ Ensure container name matches:
 mysql-container
 Check network:
 docker network ls
+```
+
 ---
 📌 Environment Variables Used
+```bash
 SPRING_DATASOURCE_URL=jdbc:mysql://mysql-container:3306/devops_db
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=root
+```
+
 ---
 🎯 Key Features
+```bash
 ✔️ Fully Automated CI/CD Pipeline
 ✔️ Dockerized Spring Boot Application
 ✔️ MySQL Container Integration
 ✔️ AWS Deployment Ready
 ✔️ Production-Level Setup
+```
+
 ---
 ## 📌 Notes
 
